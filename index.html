@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Google AI Studio Mobile Pro</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="studio-container">
+        <div class="sidebar hidden" id="sidebar">
+            <button class="new-chat-btn" id="new-chat-btn">
+                <span class="material-icons">add</span> Новый чат
+            </button>
+            <div class="chats-list" id="chats-list"></div>
+        </div>
+
+        <div class="wrapper">
+            <div class="header">
+                <div class="hdr-left">
+                    <button class="btn sidebar-toggle" id="sidebar-toggle"><span class="material-icons">menu</span></button>
+                    <a href="https://google.com" target="_blank" class="google-brand-link">
+                        <img src="https://google.com/favicon.ico" width="22" height="22" alt="Google">
+                        <span class="brand-text">Google AI</span>
+                    </a>
+                    <span id="status">Выключен</span>
+                </div>
+                <button class="btn" id="gear-btn"><span class="material-icons">settings</span></button>
+            </div>
+
+            <div class="chat-box" id="box"></div>
+
+            <div class="controls">
+                <div class="oval-face dynamic-oval" id="face">
+                    <div class="eyes">
+                        <div class="eye" id="el"></div>
+                        <div class="eye" id="er"></div>
+                    </div>
+                    <div class="mouth" id="mo"></div>
+                </div>
+                
+                <div class="form-container">
+                    <div id="file-preview-zone" class="file-preview-zone hidden"></div>
+                    <div class="form">
+                        <button class="btn-control" id="add-btn" title="Добавить файл"><span class="material-icons">attach_file</span></button>
+                        <input type="text" class="inp" id="inp" placeholder="Задайте вопрос ИИ..." disabled>
+                        <button class="btn-control" id="mic-btn" title="Голосовой ввод" disabled><span class="material-icons">mic</span></button>
+                        <button class="send" id="send" disabled><span class="material-icons">send</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="media-menu-overlay hidden" id="media-menu">
+                <div class="media-menu-card">
+                    <div class="media-menu-grid">
+                        <div class="media-option" data-source="file"><span class="material-icons icon-blue">description</span><span>Файл</span></div>
+                        <div class="media-option" data-source="photo"><span class="material-icons icon-red">image</span><span>Фото</span></div>
+                        <div class="media-option" data-source="camera"><span class="material-icons icon-yellow">photo_camera</span><span>Камера</span></div>
+                        <div class="media-option" data-source="other"><span class="material-icons icon-green">more_horiz</span><span>Другое</span></div>
+                    </div>
+                    <button class="media-cancel-btn" id="media-cancel">Отмена</button>
+                </div>
+            </div>
+
+            <div class="modal" id="modal">
+                <div class="card">
+                    <div class="modal-hdr">
+                        <span>Настройки Google AI</span>
+                        <span class="material-icons" id="close-x" style="cursor:pointer">close</span>
+                    </div>
+                    <button id="toggle-sys" class="sys-toggle-btn">Активировать ядро</button>
+                    
+                    <div class="setting-item toggle-row">
+                        <label for="wake-word-toggle">Голосовая активация ("Привет, Гугл")</label>
+                        <input type="checkbox" id="wake-word-toggle" class="custom-checkbox">
+                    </div>
+                    <div class="setting-item">
+                        <label>Пол голоса ИИ</label>
+                        <select id="voice-gender">
+                            <option value="female">Женский</option>
+                            <option value="male">Мужской</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>Системный тембр</label>
+                        <select id="voice-selector"></select>
+                    </div>
+                    <div class="setting-item">
+                        <label>Тема интерфейса</label>
+                        <select id="theme">
+                            <option value="dark">Тёмная</option>
+                            <option value="light">Светлая</option>
+                        </select>
+                    </div>
+                    <button class="close-btn" id="close-modal-btn">Готово</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="file" id="file-uploader" style="display:none">
+    <!-- В самом низу index.html замените строки подключения на эти: -->
+    <script src="dom.js"></script>
+    <script src="ai_logic.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
